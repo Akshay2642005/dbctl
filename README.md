@@ -1,5 +1,4 @@
 ```
-```
 # 🛠️  dbctl
 
 A flexible, user-friendly, and type-safe CLI + TUI tool written in Rust to **create, run, and manage Dockerized databases** (PostgreSQL, Redis, MariaDB, and more).
