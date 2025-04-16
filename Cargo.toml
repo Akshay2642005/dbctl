@@ -1,6 +1,8 @@
-[package]
-name = "dbctl"
-version = "0.1.0"
-edition = "2024"
+[workspace]
+members =[
+  'crates/dbctl-cli',
+  'crates/dbctl-core',
+  'crates/dbctl-tui'
+]
+resolver = "3"
 
-[dependencies]

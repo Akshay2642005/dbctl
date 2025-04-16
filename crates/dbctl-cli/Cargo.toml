@@ -1,0 +1,10 @@
+[package]
+name = "dbctl-cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4"
+dbctl-core = { path = "../dbctl-core" }
+dbctl-tui = { path = "../dbctl-tui" }
+anyhow="1.0"
