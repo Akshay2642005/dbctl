@@ -1,4 +1,4 @@
-# 🛠️ db-manager-cli
+# 🛠️  dbctl
 
 A flexible, user-friendly, and type-safe CLI + TUI tool written in Rust to **create, run, and manage Dockerized databases** (PostgreSQL, Redis, MariaDB, and more).
 
@@ -11,7 +11,7 @@ Built with love for learners and power users alike. 💖
 ## 🎯 Overview
 
 
-**db-manager-cli** simplifies database development and testing by providing:
+**dbctl** simplifies database development and testing by providing:
 
 - **Fast creation** of Docker containers for popular databases
 - **Easy management** via both CLI and interactive TUI modes
@@ -37,14 +37,14 @@ Built with love for learners and power users alike. 💖
 
 ```bash
 # Install from crates.io
-cargo install db-manager-cli
+cargo install dbctl
 
 # Create a PostgreSQL database
-dbman create postgres --name mypg --user admin --password secret --port 5432
+dbctl create postgres --name mypg --user admin --password secret --port 5432
 
 # Launch the interactive TUI wizard
 
-dbman wizard
+dbctl wizard
 ```
 
 
@@ -117,7 +117,7 @@ dbman wizard
 
 
 ```
-db-manager-cli/
+dbctl/
 ├── Cargo.toml
 ├── README.md
 ├── src/
@@ -154,7 +154,7 @@ db-manager-cli/
 ```bash
 
 # Create a PostgreSQL database
-$ dbman create postgres \
+$ dbctl create postgres \
   --name mypg \
   --user admin \
 
@@ -169,14 +169,14 @@ $ dbman create postgres \
 
 
 # List running database containers
-$ dbman list
+$ dbctl list
 
 # View container logs
-$ dbman logs mypg
+$ dbctl logs mypg
 
 
 # Stop and remove a container
-$ dbman remove mypg
+$ dbctl remove mypg
 ```
 
 ### Terminal User Interface
@@ -244,7 +244,7 @@ Load saved configurations:
 
 ```bash
 
-$ dbman create --from-file postgres-dev.json
+$ dbctl create --from-file postgres-dev.json
 
 ```
 
@@ -265,8 +265,8 @@ $ dbman create --from-file postgres-dev.json
 ```bash
 
 # Clone the repository
-git clone https://github.com/yourusername/db-manager-cli.git
-cd db-manager-cli
+git clone https://github.com/yourusername/dbctl.git
+cd dbctl
 
 
 # Build and install
