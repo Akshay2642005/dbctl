@@ -34,7 +34,6 @@ impl DockerEngine {
             .try_collect::<Vec<_>>()
             .await?;
 
-        // Convert env vars to Vec<&str> (what bollard expects)
         let env_vars: Vec<String> = db
             .env_vars()
             .into_iter()
@@ -77,7 +76,7 @@ impl DockerEngine {
                 Some(CreateContainerOptions::<&str> {
                     name: &container_name,
 
-                    platform: None, // Optional field; leave as None unless you're targeting specific arch
+                    platform: None,
                 }),
                 config,
             )
@@ -88,5 +87,28 @@ impl DockerEngine {
             .await?;
 
         Ok(created.id)
+    }
+
+    pub async fn stop_container(&self, _container_id: &str) -> anyhow::Result<()> {
+        // TODO: Implement stop_container
+        Ok(())
+    }
+
+    pub async fn continaer_logs(&self, _container_id: &str) -> anyhow::Result<()> {
+        // TODO: Implement container_logs
+        Ok(())
+    }
+
+    pub async fn container_stats(&self, _container_id: &str) -> anyhow::Result<()> {
+        // TODO: Implement container_stats
+        Ok(())
+    }
+
+    pub async fn container_info(
+        &self,
+        container_id: &str,
+    ) -> anyhow::Result<ContainerInspectResponse> {
+        let info = self.docker.inspect_container(container_id, None).await?;
+        Ok(info)
     }
 }

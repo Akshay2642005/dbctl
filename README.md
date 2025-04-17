@@ -71,14 +71,14 @@ dbctl wizard
 
 ### 🏗️ Core Project Setup
 
-- [ ] Project Initialization with `cargo new`
-- [ ] Modular Folder Structure
-- [ ] Logging with `tracing`
-- [ ] Error handling with `thiserror`
+- [x] Project Initialization with `cargo new`
+- [x] Modular Folder Structure
+- [x] Logging with `tracing`
+- [x] Error handling with `thiserror`
 
 ### ⚙️ CLI Interface (`clap`)
 
-- [ ] Create database (PostgreSQL)
+- [x] Create database (PostgreSQL)
 - [ ] Create database (Redis)
 - [ ] Create database (MariaDB)
 - [ ] Inspect running containers
@@ -95,7 +95,7 @@ dbctl wizard
 
 ### 🐳 Docker API (`bollard`)
 
-- [ ] Start Postgres container
+- [x] Start Postgres container
 - [ ] Start Redis container
 - [ ] Start MariaDB container
 
