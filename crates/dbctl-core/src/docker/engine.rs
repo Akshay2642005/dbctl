@@ -2,6 +2,7 @@ use bollard::Docker;
 use bollard::container::Config as ContainerConfig;
 use bollard::container::CreateContainerOptions;
 use bollard::container::StartContainerOptions;
+use bollard::container::Stats;
 use bollard::image::CreateImageOptions;
 use bollard::models::*;
 use futures_util::stream::TryStreamExt;
@@ -21,7 +22,6 @@ impl DockerEngine {
     }
 
     pub async fn start_container<D: Database>(&self, db: D) -> anyhow::Result<String> {
-        // Pull image if needed
         self.docker
             .create_image(
                 Some(CreateImageOptions {
@@ -89,19 +89,56 @@ impl DockerEngine {
         Ok(created.id)
     }
 
-    pub async fn stop_container(&self, _container_id: &str) -> anyhow::Result<()> {
-        // TODO: Implement stop_container
+    pub async fn stop_container(&self, container_id: &str) -> anyhow::Result<()> {
+        self.docker.stop_container(container_id, None).await?;
+
+        self.docker.remove_container(container_id, None).await?;
+
         Ok(())
     }
 
-    pub async fn continaer_logs(&self, _container_id: &str) -> anyhow::Result<()> {
-        // TODO: Implement container_logs
-        Ok(())
+    pub async fn container_logs(&self, container_id: &str) -> anyhow::Result<Vec<String>> {
+        let logs = self
+            .docker
+            .logs(
+                container_id,
+                Some(bollard::container::LogsOptions {
+                    stdout: true,
+                    stderr: true,
+                    follow: false,
+                    tail: "100".to_string(),
+                    ..Default::default()
+                }),
+            )
+            .try_collect::<Vec<_>>()
+            .await?;
+
+        let log_lines = logs.iter().map(|log| log.to_string()).collect();
+
+        Ok(log_lines)
     }
 
-    pub async fn container_stats(&self, _container_id: &str) -> anyhow::Result<()> {
-        // TODO: Implement container_stats
-        Ok(())
+    pub async fn container_stats(
+        &self,
+        container_id: &str,
+    ) -> anyhow::Result<Stats> {
+        let stats = self
+            .docker
+            .stats(
+                container_id,
+                Some(bollard::container::StatsOptions {
+                    stream: false,
+                    one_shot: true,
+                }),
+            )
+            .try_collect::<Vec<_>>()
+            .await?;
+
+        if let Some(container_stats) = stats.first() {
+            Ok(container_stats.clone())
+        } else {
+            anyhow::bail!("No stats available for container {}", container_id)
+        }
     }
 
     pub async fn container_info(

@@ -20,7 +20,6 @@ mod tests {
     #[test]
     fn test_postgres_defaults() {
         let pg = Postgres::default();
-
         assert_eq!(pg.name(), "pg-default");
         assert_eq!(pg.image(), "postgres:15");
         assert_eq!(pg.port(), 5432);
