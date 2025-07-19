@@ -270,6 +270,8 @@ dependencies = [
 [[package]]
 name = "dbctl-core"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "061005e7bf1fe00e55c13aff2b37c7323de8dddea1685b5bfbde23ee7ee7ce20"
 dependencies = [
  "anyhow",
  "bollard",
