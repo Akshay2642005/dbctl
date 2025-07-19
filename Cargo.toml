@@ -16,7 +16,7 @@ name = "dbctl"
 path = "src/main.rs"
 
 [dependencies]
-dbctl-cli = { path = "crates/dbctl-cli" }
-dbctl-core = { path = "crates/dbctl-core" }
+dbctl-cli = "0.1.0"
+dbctl-core = "0.1.0"
 anyhow = "1.0"
 tokio = { version = "1", features = ["full"] }

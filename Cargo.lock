@@ -263,7 +263,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "dbctl-cli",
- "dbctl-core",
+ "dbctl-core 0.1.0",
  "tokio",
 ]
 
@@ -273,13 +273,29 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
- "dbctl-core",
+ "dbctl-core 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tokio",
 ]
 
 [[package]]
 name = "dbctl-core"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bollard",
+ "futures-util",
+ "serde",
+ "serde_json",
+ "thiserror 1.0.69",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
+name = "dbctl-core"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "061005e7bf1fe00e55c13aff2b37c7323de8dddea1685b5bfbde23ee7ee7ce20"
 dependencies = [
  "anyhow",
  "bollard",
