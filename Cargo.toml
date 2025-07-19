@@ -7,7 +7,7 @@ description = "A CLI tool to manage Dockerized databases like PostgreSQL, Redis,
 repository = "https://github.com/Akshay2642005/dbctl.git"
 readme = "README.md"
 license = "Apache-2.0"
-keywords = ["cli", "tui", "docker", "postgres", "redis", "mariadb"]
+keywords = ["cli", "docker", "postgres", "redis", "mariadb"]
 categories = ["command-line-utilities", "development-tools"]
 rust-version = "1.70"
 
